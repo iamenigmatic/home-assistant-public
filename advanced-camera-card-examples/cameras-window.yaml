@@ -1,0 +1,38 @@
+type: custom:advanced-camera-card
+cameras:
+  - camera_entity: camera.camera1_fluent_2
+    title: Road
+  - camera_entity: camera.rlc_823s2_fluent
+    title: Parking
+  - camera_entity: camera.rlc_823s2_fluent_2
+    title: Cortez Entry
+  - camera_entity: camera.reolink_duo_2_poe_fluent_3
+    title: Cortez End
+  - camera_entity: camera.camera1_fluent_3
+    title: Porch
+  - camera_entity: camera.reolink_duo_2_poe_fluent_2
+    title: Frontyard
+  - camera_entity: camera.reolink_duo_2_poe_fluent
+    title: Backyard
+  - camera_entity: camera.camera1_fluent
+    title: Basement
+  - camera_entity: camera.camera1_fluent_4
+    title: Sunroom
+  - camera_entity: camera.camera1_fluent_5
+    title: Living Room
+live:
+  auto_play:
+    - selected
+  auto_pause:
+    - unselected
+  lazy_unload:
+    - unselected
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_cameras
+    state: "on"
+menu:
+  buttons:
+    screenshot:
+      enabled: true
+      permanent: true
