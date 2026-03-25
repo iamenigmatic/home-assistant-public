@@ -1,0 +1,105 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: switch.shed_wifi_switch
+        icon: mdi:power-plug
+        name: Wifi
+        show_name: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: switch.shed_wifi_switch
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+                  if (entity.state == 'off') return 'black';
+
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: switch.shed_fan
+        icon: mdi:power-plug
+        name: Fan
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: switch.toggle
+          target:
+            entity_id: switch.shed_fan
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+                  if (entity.state == 'off') return 'black';
+
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_shed
+    state: "on"
