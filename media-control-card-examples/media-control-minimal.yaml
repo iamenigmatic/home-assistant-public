@@ -1,0 +1,6 @@
+type: media-control
+entity: media_player.rx_v479
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_music
+    state: "on"
