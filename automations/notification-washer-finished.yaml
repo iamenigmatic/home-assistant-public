@@ -1,0 +1,19 @@
+alias: Notification Washer Finished
+description: ""
+triggers:
+  - trigger: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.washer
+    id: Washer Finished
+conditions: []
+actions:
+  - action: tts.speak
+    metadata: {}
+    data:
+      cache: true
+      media_player_entity_id: media_player.home_assistant_voice_0a4a37_media_player
+      message: The washer is finished.  Get your laundry into the dryer!!!!
+    target:
+      entity_id: tts.home_assistant_cloud
+mode: single
