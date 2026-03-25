@@ -1,0 +1,61 @@
+type: vertical-stack
+cards:
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: heading
+    icon: ""
+    heading: Outdoor
+    heading_style: title
+    badges:
+      - type: entity
+        show_state: false
+        show_icon: true
+        entity: light.front_flood_lights
+        icon: mdi:light-flood-down
+        color: red
+        name: FLOODS
+        visibility:
+          - condition: state
+            entity: light.front_flood_lights
+            state: "on"
+      - type: entity
+        show_state: false
+        show_icon: true
+        entity: light.string_house_lights
+        icon: mdi:string-lights
+        color: state
+        visibility:
+          - condition: state
+            entity: light.string_house_lights
+            state: "on"
+      - type: entity
+        show_state: false
+        show_icon: true
+        entity: light.porch_lights
+        color: state
+        visibility:
+          - condition: state
+            entity: light.porch_lights
+            state: "on"
+      - type: entity
+        show_state: false
+        show_icon: true
+        entity: switch.home_water_valve_shutoff_valve
+        tap_action:
+          action: none
+        color: light-blue
+        icon: mdi:water
+      - type: entity
+        show_state: true
+        show_icon: false
+        entity: sensor.elec_account_1_current_bill_electric_cost_to_date
+        color: red
+        icon: mdi:lightning-bolt
+        tap_action:
+          action: none
+    tap_action:
+      action: perform-action
+      perform_action: input_boolean.toggle
+      target:
+        entity_id: input_boolean.toggle_minimal_outdoor
