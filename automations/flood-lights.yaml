@@ -1,4 +1,6 @@
-# This is an automation for a group of tuya motion lights where when one turns on, they all turn on.  Tuya motion lights do not allow setting between on and motion, so the set back to motion is done within the Tuya app.  If you have fully local motion lights, add in an off and back to motion at the end.
+# This is an automation for a group of tuya motion lights where when one turns on, they all turn on.
+# Tuya motion lights do not allow setting between on and motion, so the set back to motion is done within the Tuya app.
+# If you have fully local motion lights, add in an off and back to motion section at the end.
 
 alias: Flood Lights Automation
 description: ""
