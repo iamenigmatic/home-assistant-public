@@ -1,0 +1,103 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: switch.bedspare
+        icon: mdi:power-plug
+        name: Spare Bed
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: switch.toggle
+          target:
+            entity_id: switch.bedspare
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+                  if (entity.state == 'off') return 'black';
+
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: button.pc
+        icon: mdi:alien
+        name: Alien
+        show_name: false
+        tap_action:
+          action: more-info
+          target:
+            entity_id: button.pc
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (states['device_tracker.alien'].state == 'not_home') return 'black';
+                  
+                  else return 'mediumseagreen';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (states['device_tracker.alien'].state == 'not_home') return 'white';
+
+                  else return 'black';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (states['device_tracker.alien'].state == 'not_home') return 'mediumseagreen';
+
+                  else return 'black';
+                ]]]
+            - width: 43%
+            - margin-top: 0%
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_bedspare
+    state: "on"
