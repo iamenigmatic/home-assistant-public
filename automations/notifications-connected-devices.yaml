@@ -1,0 +1,123 @@
+# Receive notifications when devices disconnect
+
+alias: Notifications Connected Devices
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.connected_alarm
+      - binary_sensor.connected_cams
+      - binary_sensor.connected_internet
+      - binary_sensor.connected_lights
+      - binary_sensor.connected_pc
+      - binary_sensor.connected_plugs
+    to:
+      - "on"
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.connected_alarm
+            state:
+              - "on"
+        sequence:
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              title: Alarm System Connections
+              message: >-
+                Critical sensors are unavailable {{        
+                state_attr('binary_sensor.connected_alarm', 'entity_names') |
+                join(', ') }}
+      - conditions:
+          - condition: state
+            state:
+              - "on"
+            entity_id: binary_sensor.connected_cams
+        sequence:
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              message: >-
+                Critical sensors are unavailable {{        
+                state_attr('binary_sensor.connected_cams', 'entity_names') |
+                join(', ') }}
+              title: Camera System Connections
+      - conditions:
+          - condition: state
+            state:
+              - "on"
+            entity_id: binary_sensor.connected_internet
+        sequence:
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              message: >-
+                Critical sensors are unavailable {{        
+                state_attr('binary_sensor.connected_internet', 'entity_names') |
+                join(', ') }}
+              title: Internet Connections
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.connected_lights
+            state:
+              - "on"
+            for:
+              hours: 0
+              minutes: 5
+              seconds: 0
+        sequence:
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              title: Light Source Connections
+              message: >-
+                Critical sensors are unavailable {{        
+                state_attr('binary_sensor.connected_lights', 'entity_names') |
+                join(', ') }}
+          - action: notify.gotify
+            metadata: {}
+            data:
+              message: >-
+                Critical sensors are unavailable {{        
+                state_attr('binary_sensor.connected_lights', 'entity_names') |
+                join(', ') }}
+              title: Light Source Connections
+              data:
+                extras:
+                  client::display:
+                    contentType: text/markdown
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.connected_pc
+            state:
+              - "on"
+        sequence:
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              title: PC Connection
+              message: >-
+                Critical sensors are unavailable {{        
+                state_attr('binary_sensor.connected_pc', 'entity_names') |
+                join(', ') }}
+      - conditions:
+          - condition: state
+            state:
+              - "on"
+            entity_id: binary_sensor.connected_plugs
+        sequence:
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              title: PC Connection
+              message: >-
+                Critical sensors are unavailable {{        
+                state_attr('binary_sensor.connected_plugs', 'entity_names') |
+                join(', ') }}
+mode: single
