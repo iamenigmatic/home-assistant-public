@@ -1,0 +1,131 @@
+# Uses camera sirens as Alarmo siren.  Starts quiet in case of accidental trigger but progressively gets louder.  Attach as many sirens as you want.
+
+alias: Alarmo Siren
+sequence:
+  - sequence:
+      - repeat:
+          until:
+            - condition: or
+              conditions:
+                - condition: device
+                  device_id: 661e
+                  domain: alarm_control_panel
+                  entity_id: f9f8a
+                  type: is_disarmed
+                - condition: state
+                  entity_id: alarm_control_panel.alarmo
+                  state:
+                    - triggered
+                  for:
+                    hours: 0
+                    minutes: 0
+                    seconds: 5
+          sequence:
+            - action: siren.turn_on
+              metadata: {}
+              data:
+                volume_level: 0.1
+                duration: "1"
+              target:
+                device_id:
+                  - cf2978
+                  - 60e9b
+      - repeat:
+          until:
+            - condition: or
+              conditions:
+                - condition: device
+                  device_id: 661e
+                  domain: alarm_control_panel
+                  entity_id: f9f8a4e
+                  type: is_disarmed
+                - condition: state
+                  entity_id: alarm_control_panel.alarmo
+                  state:
+                    - triggered
+                  for:
+                    hours: 0
+                    minutes: 0
+                    seconds: 10
+          sequence:
+            - action: siren.turn_on
+              metadata: {}
+              data:
+                volume_level: 0.25
+                duration: "1"
+              target:
+                device_id:
+                  - cf2978
+                  - 60e9b4
+      - repeat:
+          until:
+            - condition: or
+              conditions:
+                - condition: device
+                  device_id: 661e
+                  domain: alarm_control_panel
+                  entity_id: f9f8a4e
+                  type: is_disarmed
+                - condition: state
+                  entity_id: alarm_control_panel.alarmo
+                  state:
+                    - triggered
+                  for:
+                    hours: 0
+                    minutes: 0
+                    seconds: 15
+          sequence:
+            - action: siren.turn_on
+              metadata: {}
+              data:
+                volume_level: 0.4
+                duration: "1"
+              target:
+                device_id:
+                  - cf2978e
+                  - 60e9b459
+      - repeat:
+          until:
+            - condition: or
+              conditions:
+                - condition: device
+                  device_id: 661e7f0
+                  domain: alarm_control_panel
+                  entity_id: f9f8a4
+                  type: is_disarmed
+                - condition: state
+                  entity_id: alarm_control_panel.alarmo
+                  state:
+                    - triggered
+                  for:
+                    hours: 0
+                    minutes: 0
+                    seconds: 20
+          sequence:
+            - action: siren.turn_on
+              metadata: {}
+              data:
+                volume_level: 0.55
+                duration: "1"
+              target:
+                device_id:
+                  - cf2978e7d
+                  - 60e9b459b
+      - repeat:
+          until:
+            - condition: device
+              device_id: 661e7f0dc6ddd42e7fa81d44ea653894
+              domain: alarm_control_panel
+              entity_id: f9f8a4ed58a9a2f8b52dec996daf4484
+              type: is_disarmed
+          sequence:
+            - action: siren.turn_on
+              metadata: {}
+              data:
+                volume_level: 1
+                duration: "1"
+              target:
+                device_id:
+                  - cf2978e7d
+                  - 60e9b459b
+description: ""
