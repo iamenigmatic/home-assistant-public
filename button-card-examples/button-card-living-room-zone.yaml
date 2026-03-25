@@ -1,0 +1,703 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: light.living_room_lights
+        icon: mdi:lightbulb-group
+        name: Fan
+        show_name: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: light.living_room_lights
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'var(--button-card-light-color)';
+                  
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'darkgoldenrod';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: light.fan_1
+        icon: mdi:lightbulb
+        name: Fan 1
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.fan_1
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.fan_2
+        icon: mdi:lightbulb
+        name: Fan 2
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.fan_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.fan_3
+        icon: mdi:lightbulb
+        name: Fan 3
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.fan_3
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: input_boolean.tv_switch
+        icon: mdi:television-speaker
+        name: TV On/Off
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: input_boolean.toggle
+          target:
+            entity_id: input_boolean.tv_switch
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+                  
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: media_player.living_room
+        icon: mdi:volume-plus
+        name: Volume+
+        show_name: false
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.harmony_hub
+          data:
+            num_repeats: 3
+            delay_secs: 0.4
+            hold_secs: 0
+            command:
+              - VolumeUp
+            device: Yamaha Av Receiver
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: mediumseagreen
+            - width: 43%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: media_player.living_room
+        icon: mdi:volume-minus
+        name: Volume-
+        show_name: false
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.harmony_hub
+          data:
+            num_repeats: 3
+            delay_secs: 0.4
+            hold_secs: 0
+            command:
+              - VolumeDown
+            device: Yamaha Av Receiver
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: mediumseagreen
+            - width: 43%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: media_player.living_room
+        icon: mdi:volume-mute
+        name: Mute
+        show_name: false
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.harmony_hub
+          data:
+            num_repeats: 1
+            delay_secs: 0.4
+            hold_secs: 0
+            command:
+              - Mute
+            device: Yamaha Av Receiver
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: mediumseagreen
+            - width: 43%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: input_boolean.toggle_minimal_remote
+        icon: mdi:remote-tv
+        name: Music
+        show_name: false
+        tap_action:
+          action: perform-action
+          perform_action: input_boolean.toggle
+          target:
+            entity_id: input_boolean.toggle_minimal_remote
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'mediumseagreen';
+                ]]]
+            - width: 43%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: input_boolean.toggle_minimal_music
+        icon: mdi:music
+        name: Music
+        show_name: false
+        tap_action:
+          action: perform-action
+          perform_action: input_boolean.toggle
+          target:
+            entity_id: input_boolean.toggle_minimal_music
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'mediumseagreen';
+                ]]]
+            - width: 43%
+            - margin-top: 0%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.rx_v479
+        icon: mdi:television-box
+        name: Roku
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.harmony_hub
+          data:
+            num_repeats: 1
+            delay_secs: 0.4
+            hold_secs: 0
+            command:
+              - InputHdmi6
+            device: Yamaha AV Receiver
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI6') return 'mediumseagreen';
+                  
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI6') return 'black';
+                  
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI6') return 'black';
+                  
+                  else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: media_player.rx_v479
+        icon: mdi:sony-playstation
+        name: PS5
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.harmony_hub
+          data:
+            num_repeats: 1
+            delay_secs: 0.4
+            hold_secs: 0
+            command:
+              - InputHdmi4
+            device: Yamaha AV Receiver
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI4') return 'mediumseagreen';
+                  
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI4') return 'black';
+                  
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI4') return 'black';
+                  
+                  else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: media_player.rx_v479_ce5f58_2
+        icon: mdi:raspberry-pi
+        name: Pi
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.harmony_hub
+          data:
+            num_repeats: 1
+            delay_secs: 0.4
+            hold_secs: 0
+            command:
+              - InputHdmi3
+            device: Yamaha AV Receiver
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI3') return 'mediumseagreen';
+                  
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI3') return 'black';
+                  
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (states['media_player.rx_v479'].attributes.source == 'HDMI3') return 'black';
+                  
+                  else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: media_player.living_room
+        icon: mdi:television
+        name: TV
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.harmony_hub
+          data:
+            num_repeats: 1
+            delay_secs: 0.4
+            hold_secs: 0
+            command:
+              - PowerToggle
+            device: Sharp TV
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: mediumseagreen
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: media_player.living_room
+        icon: mdi:speaker
+        name: Stereo
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.harmony_hub
+          data:
+            num_repeats: 1
+            delay_secs: 0.4
+            hold_secs: 0
+            command:
+              - PowerToggle
+            device: Yamaha AV Receiver
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: mediumseagreen
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.home_tab_battery_level
+        icon: |
+          [[[
+              if (states['sensor.home_tab_battery_state'].state == 'charging') return 'mdi:battery-charging';
+              if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+              if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+              if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+              if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+              if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+              if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+              if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+              if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+              if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+              if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+              
+              else return 'mdi:battery-alert';
+          ]]]
+        name: Tab
+        show_name: true
+        label: >
+          [[[ return '' + states['sensor.home_tab_battery_level'].state + '%';
+          ]]]
+        show_label: false
+        tap_action:
+          action: perform-action
+          perform_action: switch.toggle
+          target:
+            entity_id: switch.tabpower
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0 && entity.state < 15) return 'red';
+                    if (entity.state >= 15 && entity.state < 30) return 'orange';
+                    if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                    else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_livingroom
+    state: "on"
