@@ -1,0 +1,31 @@
+# Turning on dining light when no motion present keeps light on until turned off, then resets motion
+
+alias: Motion Dining Light Off
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - switch.dining_light
+    to: "on"
+conditions:
+  - condition: state
+    entity_id: binary_sensor.motion_sunroom_occupancy
+    state: "off"
+actions:
+  - action: automation.turn_off
+    metadata: {}
+    data:
+      stop_actions: true
+    target:
+      entity_id: automation.motion_dining_light
+  - wait_for_trigger:
+      - trigger: state
+        entity_id:
+          - switch.dining_light
+        to: "off"
+  - action: automation.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: automation.motion_dining_light
+mode: restart
