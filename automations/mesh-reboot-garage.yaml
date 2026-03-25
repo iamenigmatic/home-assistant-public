@@ -1,0 +1,59 @@
+# Uses a switch to reboot mesh wifi connection when lost for 10 minutes
+
+alias: Mesh Reboot Garage
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.aimesh_rp_ac1900
+    from: "on"
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+conditions: []
+actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.garage_wifi_switch
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.garage_wifi_switch
+  - delay:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.aimesh_rp_ac1900
+            state: "on"
+        sequence:
+          - action: automation.reload
+            metadata: {}
+            data: {}
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.aimesh_rp_ac1900
+            state:
+              - "off"
+              - unavailable
+              - unknown
+        sequence:
+          - action: automation.trigger
+            metadata: {}
+            data:
+              skip_condition: true
+            target:
+              entity_id: automation.mesh_reboot_garage
+mode: single
