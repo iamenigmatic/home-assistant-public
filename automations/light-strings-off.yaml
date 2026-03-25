@@ -1,0 +1,20 @@
+# Turn off house string lights at 3am
+
+alias: Light Strings Off
+description: ""
+triggers:
+  - trigger: time
+    at: "03:00:00"
+conditions: []
+actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.indoor_lights
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.string_house_lights
+mode: single
