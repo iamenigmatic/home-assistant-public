@@ -1,0 +1,15 @@
+# Harmony Hub script to turn up the volume 3 steps per press
+
+alias: Volume Step Up
+sequence:
+  - action: remote.send_command
+    target:
+      entity_id: remote.harmony_hub
+    data:
+      num_repeats: 3
+      delay_secs: 0.4
+      hold_secs: 0
+      command:
+        - VolumeUp
+      device: Yamaha Av Receiver
+description: ""
