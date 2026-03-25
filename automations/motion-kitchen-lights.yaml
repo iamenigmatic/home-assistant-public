@@ -1,0 +1,352 @@
+# Multi stage kitchen lights automation with brightness and warmth depending on time.  Slow off and on.
+
+alias: Motion Kitchen Lights
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.motion_kitchen_occupancy
+      - binary_sensor.motion_kitchen_2_occupancy
+    to:
+      - "on"
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: time
+            after: "02:00:00"
+            before: "06:00:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.lightskitchen
+            data:
+              color_temp_kelvin: 2315
+              brightness_pct: 1
+          - wait_for_trigger:
+              - trigger: state
+                entity_id:
+                  - binary_sensor.motion_kitchen_group
+                to:
+                  - "off"
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 1
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+      - conditions:
+          - condition: time
+            after: "06:00:00"
+            before: "07:15:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.lightskitchen
+            data:
+              color_temp_kelvin: 2315
+              brightness_pct: 7
+          - wait_for_trigger:
+              - trigger: state
+                entity_id:
+                  - binary_sensor.motion_kitchen_group
+                to:
+                  - "off"
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 1
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+      - conditions:
+          - condition: time
+            after: "07:15:00"
+            before: "08:30:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.lightskitchen
+            data:
+              brightness_pct: 15
+              color_temp_kelvin: 2315
+          - wait_for_trigger:
+              - trigger: state
+                entity_id:
+                  - binary_sensor.motion_kitchen_group
+                to:
+                  - "off"
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 1
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+      - conditions:
+          - condition: time
+            after: "08:30:00"
+            before: "16:30:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+            enabled: true
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.lightskitchen
+            data:
+              brightness_pct: 55
+              color_temp_kelvin: 2402
+          - wait_for_trigger:
+              - trigger: state
+                entity_id:
+                  - binary_sensor.motion_kitchen_group
+                to:
+                  - "off"
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 1
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+      - conditions:
+          - condition: time
+            after: "16:30:00"
+            before: "18:00:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.lightskitchen
+            data:
+              brightness_pct: 65
+              color_temp_kelvin: 2587
+          - wait_for_trigger:
+              - trigger: state
+                entity_id:
+                  - binary_sensor.motion_kitchen_group
+                to:
+                  - "off"
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 1
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+      - conditions:
+          - condition: time
+            after: "18:00:00"
+            before: "22:00:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.lightskitchen
+            data:
+              brightness_pct: 80
+              color_temp_kelvin: 3359
+          - wait_for_trigger:
+              - trigger: state
+                entity_id:
+                  - binary_sensor.motion_kitchen_group
+                to:
+                  - "off"
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 1
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+      - conditions:
+          - condition: time
+            after: "22:00:00"
+            before: "00:00:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.lightskitchen
+            data:
+              brightness_pct: 40
+              color_temp_kelvin: 2348
+          - wait_for_trigger:
+              - trigger: state
+                entity_id:
+                  - binary_sensor.motion_kitchen_group
+                to:
+                  - "off"
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 1
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+      - conditions:
+          - condition: time
+            after: "00:00:00"
+            before: "02:00:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.lightskitchen
+            data:
+              color_temp_kelvin: 2163
+              brightness_pct: 20
+          - wait_for_trigger:
+              - trigger: state
+                entity_id:
+                  - binary_sensor.motion_kitchen_group
+                to:
+                  - "off"
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 1
+            target:
+              entity_id: light.lightskitchen
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.lightskitchen
+mode: restart
