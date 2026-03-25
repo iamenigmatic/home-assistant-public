@@ -1,0 +1,345 @@
+alias: Notifications Cameras Animals
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.camera1_pet_3
+      - binary_sensor.rlc_823s2_animal_2
+      - binary_sensor.reolink_duo_2_poe_animal_3
+      - binary_sensor.camera1_pet_2
+      - binary_sensor.rlc_823s2_animal
+      - binary_sensor.reolink_duo_2_poe_animal_2
+      - binary_sensor.reolink_duo_2_poe_animal
+      - binary_sensor.camera1_pet
+    to:
+      - "on"
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.rlc_823s2_animal_2
+            state:
+              - "on"
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            target:
+              entity_id: camera.rlc_823s2_fluent_2
+            data:
+              filename: >-
+                /media/ReoDetection/RoadEntry_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 10
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            target:
+              entity_id: camera.rlc_823s2_fluent_2
+            data:
+              filename: /media/ReoDetection/current-road-entry-animal.jpg
+            enabled: true
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              data:
+                image: /media/local/ReoDetection/current-road-entry-animal.jpg
+              message: Animal detected on Road Entry.
+              title: Road Entry Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.reolink_duo_2_poe_animal_3
+            state:
+              - "on"
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/RoadEnd_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_3
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 15
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-road-end-animal.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_3
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              data:
+                image: /media/local/ReoDetection/current-road-end-animal.jpg
+              message: Animal detected on Road End.
+              title: Road End Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.camera1_pet_2
+            state:
+              - "on"
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-road-animal.jpg
+            enabled: true
+            target:
+              entity_id: camera.camera1_fluent_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Road_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.camera1_fluent_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Road_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.camera1_fluent_2
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              data:
+                image: /media/local/ReoDetection/current-road-animal.jpg
+              message: Animal detected on Road.
+              title: Road Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.rlc_823s2_animal
+            state:
+              - "on"
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Parking_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.rlc_823s2_fluent
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 15
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-parking-animal.jpg
+            enabled: true
+            target:
+              entity_id: camera.rlc_823s2_fluent
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              data:
+                image: /media/local/ReoDetection/current-parking-animal.jpg
+              message: Animal detected on Parking.
+              title: Parking Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.reolink_duo_2_poe_animal_2
+            state:
+              - "on"
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Frontyard_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Frontyard_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-frontyard-animal.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_2
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              data:
+                image: /media/local/ReoDetection/current-frontyard-animal.jpg
+              message: Animal detected on Frontyard.
+              title: Frontyard Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.reolink_duo_2_poe_animal
+            state:
+              - "on"
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Backyard_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Backyard_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-backyard-animal.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              data:
+                image: /media/local/ReoDetection/current-backyard-animal.jpg
+              message: Animal detected on Backyard.
+              title: Backyard Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.camera1_pet_3
+            state:
+              - "on"
+          - condition: time
+            after: "01:00:00"
+            before: "07:00:00"
+            weekday:
+              - sat
+              - fri
+              - thu
+              - wed
+              - tue
+              - mon
+              - sun
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Porch_Animal_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.camera1_fluent_3
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-porch-animal.jpg
+            enabled: true
+            target:
+              entity_id: camera.camera1_fluent_3
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              data:
+                image: /media/local/ReoDetection/current-porch-animal.jpg
+              message: Animal detected on Porch.
+              title: Porch Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+mode: single
