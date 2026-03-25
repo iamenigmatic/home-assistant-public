@@ -1,0 +1,206 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: sensor.phone1_battery_level
+            icon: |
+              [[[
+                if (states['sensor.phone1_battery_state'].state == 'charging') return 'mdi:battery-charging';
+                if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+
+                else return 'mdi:battery-alert';
+              ]]]
+            name: Status
+            show_name: false
+            tap_action:
+              action: more-info
+              target:
+                entity_id: sensor.phone1_battery_level
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: black
+                - padding: 0%
+                - color: white
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: null
+                - border-radius: 50%
+                - width: 100%
+              icon:
+                - color: |
+                    [[[
+                        if (entity.state > 0 && entity.state < 15) return 'red';
+                        if (entity.state >= 15 && entity.state < 30) return 'orange';
+                        if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                        else return 'mediumseagreen';
+                    ]]]
+                - width: 25px
+                - margin-top: 0%
+      - type: custom:button-card
+        entity: person.person1
+        show_entity_picture: true
+        icon: mdi:human
+        name: Person1
+        show_name: false
+        label: |
+          [[[ return '' + states['person.person1'].state; ]]]
+        show_label: false
+        tap_action:
+          action: more-info
+          target:
+            entity_id: person.person1
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (states['person.person1'].state == 'home') return 'mediumseagreen';
+                  if (states['person.person1'].state == 'Work') return 'midnightblue';
+                  
+                  else return 'grey';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (states['person.person1'].state == 'home') return 'white';
+                  
+                  else return 'black';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+            - border-radius: 50%
+            - width: 100%
+          icon:
+            - color: |
+                [[[
+                  if (states['person.person1'].state == 'home') return 'mediumseagreen';
+
+                  else return 'black';
+                ]]]
+            - width: 60px
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: person.person2
+        show_entity_picture: true
+        icon: mdi:human
+        name: Person2
+        show_name: false
+        label: |
+          [[[ return '' + states['person.person2'].state; ]]]
+        show_label: false
+        tap_action:
+          action: more-info
+          target:
+            entity_id: person.person2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (states['person.person2'].state == 'home') return 'mediumseagreen';
+                  if (states['person.person2'].state == 'Work') return 'midnightblue';
+                  
+                  else return 'grey';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (states['person.person2'].state == 'home') return 'white';
+
+                  else return 'black';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+            - border-radius: 50%
+            - width: 100%
+          icon:
+            - color: |
+                [[[
+                  if (states['person.person2'].state == 'home') return 'mediumseagreen';
+
+                  else return 'black';
+                ]]]
+            - width: 60px
+            - margin-top: 0%
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: sensor.phone2_battery_level
+            icon: |
+              [[[
+                  if (states['sensor.phone2_battery_state'].state == 'charging') return 'mdi:battery-charging';
+                  if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                  if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                  if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                  if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                  if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                  if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                  if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                  if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                  if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                  if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+                  
+                  else return 'mdi:battery-alert';
+              ]]]
+            name: Status
+            show_name: false
+            tap_action:
+              action: more-info
+              target:
+                entity_id: sensor.phone2_battery_level
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: black
+                - padding: 0%
+                - color: white
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: null
+                - border-radius: 50%
+                - width: 100%
+              icon:
+                - color: |
+                    [[[
+                        if (entity.state > 0 && entity.state < 15) return 'red';
+                        if (entity.state >= 15 && entity.state < 30) return 'orange';
+                        if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                        else return 'mediumseagreen';
+                    ]]]
+                - width: 25px
+                - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
