@@ -1,0 +1,1306 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: heading
+        icon: ""
+        heading: Nest LR
+        heading_style: subtitle
+      - type: custom:button-card
+        entity: binary_sensor.nest_protect_living_room_smoke_status
+        icon: |
+          [[[
+            if (entity.state == 'off') return 'mdi:smoking';
+                  
+            else return 'mdi:smoke';
+          ]]]
+        name: Status
+        show_name: false
+        label: |
+          [[[
+            if (entity.state == 'off') return 'Clear';
+
+            else return 'SMOKE';
+          ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: binary_sensor.nest_protect_living_room_smoke_status
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - animation: |
+                [[[
+                  if (entity.state == 'on') return 'blink 2s ease infinite';
+                ]]]
+            - background-color: |
+                [[[
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'off') return 'white';
+
+                  else return 'black';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'yellow';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: binary_sensor.nest_protect_living_room_co_status
+        icon: mdi:molecule-co
+        name: Status
+        show_name: false
+        label: |
+          [[[
+            if (entity.state == 'off') return 'Clear';
+
+            else return 'CO ALERT';
+          ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: binary_sensor.nest_protect_living_room_co_status
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - animation: |
+                [[[
+                  if (entity.state == 'on') return 'blink 2s ease infinite';
+                ]]]
+            - background-color: |
+                [[[
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'off') return 'white';
+
+                  else return 'black';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'yellow';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: binary_sensor.nest_protect_living_room_heat_status
+        icon: |
+          [[[
+            if (entity.state == 'off') return 'mdi:thermometer';
+                  
+            else return 'mdi:thermometer-alert';
+          ]]]
+        name: Status
+        show_name: false
+        label: |
+          [[[
+            if (entity.state == 'off') return 'Normal';
+
+            else return 'HEAT ALERT';
+          ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: binary_sensor.nest_protect_living_room_heat_status
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - animation: |
+                [[[
+                  if (entity.state == 'on') return 'blink 2s ease infinite';
+                ]]]
+            - background-color: |
+                [[[
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'off') return 'white';
+
+                  else return 'black';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'yellow';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.nest_protect_living_room_battery_level
+        icon: |
+          [[[
+              if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+              if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+              if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+              if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+              if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+              if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+              if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+              if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+              if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+              if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+              
+              else return 'mdi:battery-alert';
+          ]]]
+        name: Status
+        show_name: false
+        label: >
+          [[[ return '' +
+          states['sensor.nest_protect_living_room_battery_level'].state + '%';
+          ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.nest_protect_living_room_battery_level
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0 && entity.state < 15) return 'red';
+                    if (entity.state >= 15 && entity.state < 30) return 'orange';
+                    if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                    else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.door_front_window_door_is_open
+            icon: |
+              [[[
+                if (entity.state == 'off') return 'mdi:door-closed';
+                      
+                else return 'mdi:door-open';
+              ]]]
+            name: Front
+            show_name: true
+            tap_action:
+              action: more-info
+              target:
+                entity_id: binary_sensor.door_front_window_door_is_open
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: |
+                    [[[
+                      if (entity.state == 'off') return 'mediumseagreen';
+                      
+                      else return 'red';
+                    ]]]
+                - padding: 0%
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'white';
+                    ]]]
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: capitalize
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'yellow';
+                    ]]]
+                - width: 30%
+                - margin-top: 0%
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.door_front_window_door_is_closed_2
+                icon: |
+                  [[[
+                    if (entity.state == 'on') return 'mdi:shield-lock-outline';
+                    if (entity.state == 'off') return 'mdi:shield-lock-outline';
+                          
+                    else return 'mdi:shield-lock-open-outline';
+                  ]]]
+                name: Status
+                show_name: false
+                label: >
+                  [[[ return '' + states['select.front_door_bypass_mode'].state;
+                  ]]]
+                show_label: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: binary_sensor.door_front_window_door_is_closed_2
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: |
+                        [[[
+                          if (entity.state == 'on') return 'black';
+                          if (entity.state == 'off') return 'black';
+                          
+                          else return 'red';
+                        ]]]
+                    - padding: 0%
+                    - color: |
+                        [[[
+                          if (entity.state == 'on') return 'white';
+                          if (entity.state == 'off') return 'white';
+
+                          else return 'black';
+                        ]]]
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: capitalize
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                          if (entity.state == 'on') return 'mediumseagreen';
+                          if (entity.state == 'off') return 'mediumseagreen';
+
+                          else return 'yellow';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+              - type: custom:button-card
+                entity: sensor.door_front_battery_level
+                icon: |
+                  [[[
+                      if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                      if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                      if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                      if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                      if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                      if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                      if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                      if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                      if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                      if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+                      
+                      else return 'mdi:battery-alert';
+                  ]]]
+                name: Status
+                show_name: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: sensor.door_front_battery_level
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: black
+                    - padding: 0%
+                    - color: white
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: null
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                            if (entity.state >= 0 && entity.state < 15) return 'red';
+                            if (entity.state >= 15 && entity.state < 30) return 'orange';
+                            if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                            else return 'mediumseagreen';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.door_back_intrusion
+            icon: |
+              [[[
+                if (entity.state == 'off') return 'mdi:door-closed';
+                      
+                else return 'mdi:door-open';
+              ]]]
+            name: Back
+            show_name: true
+            tap_action:
+              action: more-info
+              target:
+                entity_id: binary_sensor.door_back_intrusion
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: |
+                    [[[
+                      if (entity.state == 'off') return 'mediumseagreen';
+                      
+                      else return 'red';
+                    ]]]
+                - padding: 0%
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'white';
+                    ]]]
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: capitalize
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'yellow';
+                    ]]]
+                - width: 30%
+                - margin-top: 0%
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.door_back_tampering_product_cover_removed
+                icon: |
+                  [[[
+                    if (entity.state == 'off') return 'mdi:shield-lock-outline';
+                          
+                    else return 'mdi:shield-lock-open-outline';
+                  ]]]
+                name: Status
+                show_name: false
+                label: >
+                  [[[ return '' + states['select.back_door_bypass_mode'].state;
+                  ]]]
+                show_label: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: binary_sensor.door_back_tampering_product_cover_removed
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: |
+                        [[[
+                          if (entity.state == 'off') return 'black';
+                          if (entity.state == 'Faulted') return 'orange';
+                          
+                          else return 'red';
+                        ]]]
+                    - padding: 0%
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'white';
+
+                          else return 'black';
+                        ]]]
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: capitalize
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'mediumseagreen';
+
+                          else return 'yellow';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+              - type: custom:button-card
+                entity: sensor.door_back_battery_level
+                icon: |
+                  [[[
+                      if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                      if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                      if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                      if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                      if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                      if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                      if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                      if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                      if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                      if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+                      
+                      else return 'mdi:battery-alert';
+                  ]]]
+                name: Status
+                show_name: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: sensor.door_back_battery_level
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: black
+                    - padding: 0%
+                    - color: white
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: null
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                            if (entity.state >= 0 && entity.state < 15) return 'red';
+                            if (entity.state >= 15 && entity.state < 30) return 'orange';
+                            if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                            else return 'mediumseagreen';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.door_shed_intrusion
+            icon: |
+              [[[
+                if (entity.state == 'off') return 'mdi:door-closed';
+                      
+                else return 'mdi:door-open';
+              ]]]
+            name: Shed
+            show_name: true
+            tap_action:
+              action: more-info
+              target:
+                entity_id: binary_sensor.door_shed_intrusion
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: |
+                    [[[
+                      if (entity.state == 'off') return 'mediumseagreen';
+                      
+                      else return 'red';
+                    ]]]
+                - padding: 0%
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'white';
+                    ]]]
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: capitalize
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'yellow';
+                    ]]]
+                - width: 30%
+                - margin-top: 0%
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.door_shed_tampering_product_cover_removed
+                icon: |
+                  [[[
+                    if (entity.state == 'off') return 'mdi:shield-lock-outline';
+                          
+                    else return 'mdi:shield-lock-open-outline';
+                  ]]]
+                name: Status
+                show_name: false
+                label: >
+                  [[[ return '' + states['select.shed_door_bypass_mode'].state;
+                  ]]]
+                show_label: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: binary_sensor.door_shed_tampering_product_cover_removed
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: |
+                        [[[
+                          if (entity.state == 'off') return 'black';
+                          if (entity.state == 'Faulted') return 'orange';
+                          
+                          else return 'red';
+                        ]]]
+                    - padding: 0%
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'white';
+
+                          else return 'black';
+                        ]]]
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: capitalize
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'mediumseagreen';
+
+                          else return 'yellow';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+              - type: custom:button-card
+                entity: sensor.door_shed_battery_level
+                icon: |
+                  [[[
+                      if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                      if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                      if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                      if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                      if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                      if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                      if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                      if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                      if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                      if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+                      
+                      else return 'mdi:battery-alert';
+                  ]]]
+                name: Status
+                show_name: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: sensor.door_shed_battery_level
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: black
+                    - padding: 0%
+                    - color: white
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: null
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                            if (entity.state >= 0 && entity.state < 15) return 'red';
+                            if (entity.state >= 15 && entity.state < 30) return 'orange';
+                            if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                            else return 'mediumseagreen';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.window_bath_intrusion
+            icon: |
+              [[[
+                if (entity.state == 'off') return 'mdi:window-closed';
+                      
+                else return 'mdi:window-open';
+              ]]]
+            name: Bath
+            show_name: true
+            tap_action:
+              action: more-info
+              target:
+                entity_id: binary_sensor.window_bath_intrusion
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: |
+                    [[[
+                      if (entity.state == 'off') return 'mediumseagreen';
+                      
+                      else return 'red';
+                    ]]]
+                - padding: 0%
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'white';
+                    ]]]
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: capitalize
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'yellow';
+                    ]]]
+                - width: 30%
+                - margin-top: 0%
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.window_bath_tampering_product_cover_removed
+                icon: |
+                  [[[
+                    if (entity.state == 'off') return 'mdi:shield-lock-outline';
+                          
+                    else return 'mdi:shield-lock-open-outline';
+                  ]]]
+                name: Status
+                show_name: false
+                label: >
+                  [[[ return '' +
+                  states['select.window_bath_bypass_mode'].state; ]]]
+                show_label: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: binary_sensor.window_bath_tampering_product_cover_removed
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: |
+                        [[[
+                          if (entity.state == 'off') return 'black';
+                          if (entity.state == 'Faulted') return 'orange';
+                          
+                          else return 'red';
+                        ]]]
+                    - padding: 0%
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'white';
+
+                          else return 'black';
+                        ]]]
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: capitalize
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'mediumseagreen';
+
+                          else return 'yellow';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+              - type: custom:button-card
+                entity: sensor.window_bath_battery_level
+                icon: |
+                  [[[
+                      if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                      if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                      if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                      if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                      if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                      if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                      if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                      if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                      if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                      if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+                      
+                      else return 'mdi:battery-alert';
+                  ]]]
+                name: Status
+                show_name: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: sensor.window_bath_battery_level
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: black
+                    - padding: 0%
+                    - color: white
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: null
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                            if (entity.state >= 0 && entity.state < 15) return 'red';
+                            if (entity.state >= 15 && entity.state < 30) return 'orange';
+                            if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                            else return 'mediumseagreen';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.window_bed_spare_1_intrusion
+            icon: |
+              [[[
+                if (entity.state == 'off') return 'mdi:window-closed';
+                      
+                else return 'mdi:window-open';
+              ]]]
+            name: Spare 1
+            show_name: true
+            tap_action:
+              action: more-info
+              target:
+                entity_id: binary_sensor.window_bed_spare_1_intrusion
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: |
+                    [[[
+                      if (entity.state == 'off') return 'mediumseagreen';
+                      
+                      else return 'red';
+                    ]]]
+                - padding: 0%
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'white';
+                    ]]]
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: capitalize
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'yellow';
+                    ]]]
+                - width: 30%
+                - margin-top: 0%
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: >-
+                  binary_sensor.window_bed_spare_1_tampering_product_cover_removed
+                icon: |
+                  [[[
+                    if (entity.state == 'off') return 'mdi:shield-lock-outline';
+                          
+                    else return 'mdi:shield-lock-open-outline';
+                  ]]]
+                name: Status
+                show_name: false
+                label: >
+                  [[[ return '' +
+                  states['select.bed_spare_1_bypass_mode'].state; ]]]
+                show_label: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: >-
+                      binary_sensor.window_bed_spare_1_tampering_product_cover_removed
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: |
+                        [[[
+                          if (entity.state == 'off') return 'black';
+                          if (entity.state == 'Faulted') return 'orange';
+                          
+                          else return 'red';
+                        ]]]
+                    - padding: 0%
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'white';
+
+                          else return 'black';
+                        ]]]
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: capitalize
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'mediumseagreen';
+
+                          else return 'yellow';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+              - type: custom:button-card
+                entity: sensor.window_bed_spare_1_battery_level
+                icon: |
+                  [[[
+                      if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                      if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                      if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                      if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                      if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                      if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                      if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                      if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                      if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                      if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+                      
+                      else return 'mdi:battery-alert';
+                  ]]]
+                name: Status
+                show_name: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: sensor.window_bed_spare_1_battery_level
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: black
+                    - padding: 0%
+                    - color: white
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: null
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                            if (entity.state >= 0 && entity.state < 15) return 'red';
+                            if (entity.state >= 15 && entity.state < 30) return 'orange';
+                            if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                            else return 'mediumseagreen';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.window_bed_spare_2_intrusion
+            icon: |
+              [[[
+                if (entity.state == 'off') return 'mdi:window-closed';
+                      
+                else return 'mdi:window-open';
+              ]]]
+            name: Spare 2
+            show_name: true
+            tap_action:
+              action: more-info
+              target:
+                entity_id: binary_sensor.window_bed_spare_2_intrusion
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: |
+                    [[[
+                      if (entity.state == 'off') return 'mediumseagreen';
+                      
+                      else return 'red';
+                    ]]]
+                - padding: 0%
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'white';
+                    ]]]
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: capitalize
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'yellow';
+                    ]]]
+                - width: 30%
+                - margin-top: 0%
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: >-
+                  binary_sensor.window_bed_spare_2_tampering_product_cover_removed
+                icon: |
+                  [[[
+                    if (entity.state == 'off') return 'mdi:shield-lock-outline';
+                    else return 'mdi:shield-lock-open-outline';
+                  ]]]
+                name: Status
+                show_name: false
+                label: >
+                  [[[ return '' +
+                  states['select.window_bed_spare_2_bypass_mode'].state; ]]]
+                show_label: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: >-
+                      binary_sensor.window_bed_spare_2_tampering_product_cover_removed
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: |
+                        [[[
+                          if (entity.state == 'off') return 'black';
+                          if (entity.state == 'Faulted') return 'orange';
+                          
+                          else return 'red';
+                        ]]]
+                    - padding: 0%
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'white';
+
+                          else return 'black';
+                        ]]]
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: capitalize
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'mediumseagreen';
+
+                          else return 'yellow';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+              - type: custom:button-card
+                entity: sensor.window_bed_spare_2_battery_level
+                icon: |
+                  [[[
+                      if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                      if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                      if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                      if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                      if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                      if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                      if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                      if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                      if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                      if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+                      
+                      else return 'mdi:battery-alert';
+                  ]]]
+                name: Status
+                show_name: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: sensor.window_bed_spare_2_battery_level
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: black
+                    - padding: 0%
+                    - color: white
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: null
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                            if (entity.state >= 0 && entity.state < 15) return 'red';
+                            if (entity.state >= 15 && entity.state < 30) return 'orange';
+                            if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                            else return 'mediumseagreen';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.window_sunroom_1_intrusion
+            icon: |
+              [[[
+                if (entity.state == 'off') return 'mdi:window-closed';
+                      
+                else return 'mdi:window-open';
+              ]]]
+            name: Sunroom
+            show_name: true
+            tap_action:
+              action: more-info
+              target:
+                entity_id: binary_sensor.window_sunroom_1_intrusion
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: |
+                    [[[
+                      if (entity.state == 'off') return 'mediumseagreen';
+                      
+                      else return 'red';
+                    ]]]
+                - padding: 0%
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'white';
+                    ]]]
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: capitalize
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - color: |
+                    [[[
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'yellow';
+                    ]]]
+                - width: 30%
+                - margin-top: 0%
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.window_sunroom_1_tampering_product_cover_removed
+                icon: |
+                  [[[
+                    if (entity.state == 'off') return 'mdi:shield-lock-outline';
+                          
+                    else return 'mdi:shield-lock-open-outline';
+                  ]]]
+                name: Status
+                show_name: false
+                label: >
+                  [[[ return '' +
+                  states['select.front_window_bypass_mode'].state; ]]]
+                show_label: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: select.front_window_bypass_mode
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: |
+                        [[[
+                          if (entity.state == 'off') return 'black';
+                          if (entity.state == 'Faulted') return 'orange';
+                          
+                          else return 'red';
+                        ]]]
+                    - padding: 0%
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'white';
+
+                          else return 'black';
+                        ]]]
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: capitalize
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                          if (entity.state == 'off') return 'mediumseagreen';
+
+                          else return 'yellow';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+              - type: custom:button-card
+                entity: sensor.window_sunroom_1_battery_level
+                icon: |
+                  [[[
+                      if (entity.state > 0 && entity.state <= 10) return 'mdi:battery-10';
+                      if (entity.state > 10 && entity.state <= 20) return 'mdi:battery-20';
+                      if (entity.state > 20 && entity.state <= 30) return 'mdi:battery-30';
+                      if (entity.state > 30 && entity.state <= 40) return 'mdi:battery-40';
+                      if (entity.state > 40 && entity.state <= 50) return 'mdi:battery-50';
+                      if (entity.state > 50 && entity.state <= 60) return 'mdi:battery-60';
+                      if (entity.state > 60 && entity.state <= 70) return 'mdi:battery-70';
+                      if (entity.state > 70 && entity.state <= 80) return 'mdi:battery-80';
+                      if (entity.state > 80 && entity.state <= 90) return 'mdi:battery-90';
+                      if (entity.state > 90 && entity.state <= 100) return 'mdi:battery';
+                      
+                      else return 'mdi:battery-alert';
+                  ]]]
+                name: Status
+                show_name: false
+                tap_action:
+                  action: more-info
+                  target:
+                    entity_id: sensor.window_sunroom_1_battery_level
+                styles:
+                  card:
+                    - "--mdc-ripple-color": lime
+                    - "--mdc-ripple-press-opacity": 0.5
+                    - background-color: black
+                    - padding: 0%
+                    - color: white
+                    - font-size: 11px
+                    - font-weight: bold
+                    - text-transform: null
+                  img_cell:
+                    - justify-content: start
+                    - align-items: start
+                    - margin: none
+                  icon:
+                    - color: |
+                        [[[
+                            if (entity.state >= 0 && entity.state < 15) return 'red';
+                            if (entity.state >= 15 && entity.state < 30) return 'orange';
+                            if (entity.state >= 30 && entity.state < 70.0) return 'yellow';
+                            else return 'mediumseagreen';
+                        ]]]
+                    - width: 75%
+                    - margin-top: 0%
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_alarm
+    state: "on"
