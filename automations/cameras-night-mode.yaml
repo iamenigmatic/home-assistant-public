@@ -1,0 +1,43 @@
+# Force some cameras into IR
+
+alias: Cameras Night Mode
+description: ""
+triggers:
+  - trigger: sun
+    event: sunrise
+    offset: 0
+  - trigger: sun
+    event: sunset
+    offset: 0
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: sun
+            before: sunrise
+            after: sunset
+        sequence:
+          - action: select.select_option
+            metadata: {}
+            data:
+              option: blackwhite
+            target:
+              entity_id:
+                - select.camera1_day_night_mode_3
+                - select.reolink_duo_2_poe_day_night_mode
+                - select.camera1_day_night_mode_2
+      - conditions:
+          - condition: sun
+            before: sunset
+            after: sunrise
+        sequence:
+          - action: select.select_option
+            metadata: {}
+            data:
+              option: auto
+            target:
+              entity_id:
+                - select.camera1_day_night_mode_3
+                - select.reolink_duo_2_poe_day_night_mode
+                - select.camera1_day_night_mode_2
+mode: single
