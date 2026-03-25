@@ -1,0 +1,49 @@
+# Keeps humidity level constant using a threshold sensor.  Only works if alarm is disarmed.  Turns a switch on and off to power any dehumidifier.
+
+alias: Humidity Level House Automation
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.humidity_level_house_threshold
+    to: "off"
+conditions:
+  - condition: time
+    after: "09:00:00"
+    before: "23:00:00"
+    weekday:
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+  - condition: device
+    device_id: 661e7f
+    domain: alarm_control_panel
+    entity_id: f9f8a
+    type: is_disarmed
+actions:
+  - choose:
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.humidity_level_house
+            above: 50.8
+        sequence:
+          - action: switch.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.dehumidsunroom
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.humidity_level_house
+            below: 46
+        sequence:
+          - action: switch.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.dehumidsunroom
+mode: single
