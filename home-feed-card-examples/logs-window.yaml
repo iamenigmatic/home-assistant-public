@@ -1,0 +1,103 @@
+type: custom:home-feed-card
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_logs_window
+    state: "on"
+title: Logs
+card_id: main_feed
+show_empty: false
+calendars: null
+id_filter: ^home_feed_.*
+more_info_on_tap: true
+state_color: true
+compact_mode: true
+max_height: 180px
+max_item_count: 100
+show_icons: false
+entities:
+  - entity: binary_sensor.connected_alarm
+    name: Alarm status warning
+    content_template: "{{display_name}} changed to {{state}}"
+  - entity: binary_sensor.connected_internet
+    name: WAN status warning
+    content_template: "{{display_name}} changed to {{state}}"
+  - entity: binary_sensor.camera1_vehicle_2
+    name: Road
+    content_template: Vehicle <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.camera1_person_2
+    name: Road
+    content_template: Person <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.camera1_pet_2
+    name: Road
+    content_template: Animal <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.camera1_vehicle
+    name: Basement
+    content_template: Vehicle <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.camera1_person
+    name: Basement
+    content_template: Person <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.camera1_pet
+    name: Basement
+    content_template: Animal <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.camera1_vehicle_3
+    name: Porch
+    content_template: Vehicle <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.camera1_person_3
+    name: Porch
+    content_template: Person <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.camera1_pet_3
+    name: Porch
+    content_template: Animal <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_vehicle_2
+    name: Frontyard
+    content_template: Vehicle <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_person_2
+    name: Frontyard
+    content_template: Person <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_animal_2
+    name: Frontyard
+    content_template: Animal <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_vehicle
+    name: Backyard
+    content_template: Vehicle <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_person
+    name: Backyard
+    content_template: Person <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_animal
+    name: Backyard
+    content_template: Animal <b>DETECTED</b> by {{display_name}} cam
+  - entity: light.living_room_lights
+    name: Living Room
+    content_template: "{{display_name}} lights {{state}}"
+  - entity: light.lightskitchen
+    name: Kitchen
+    content_template: "{{display_name}} lights {{state}}"
+  - entity: light.porch_lights
+    name: Porch
+    content_template: "{{display_name}} lights {{state}}"
+  - entity: binary_sensor.rlc_823s2_vehicle
+    name: Parking
+    content_template: Vehicle <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.rlc_823s2_person
+    name: Parking
+    content_template: Person <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.rlc_823s2_animal
+    name: Parking
+    content_template: Animal <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.rlc_823s2_vehicle_2
+    name: Road Entry
+    content_template: Vehicle <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.rlc_823s2_person_2
+    name: Road Entry
+    content_template: Person <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.rlc_823s2_animal_2
+    name: Road Entry
+    content_template: Animal <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_vehicle_3
+    name: Road End
+    content_template: Vehicle <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_person_3
+    name: Road End
+    content_template: Person <b>DETECTED</b> by {{display_name}} cam
+  - entity: binary_sensor.reolink_duo_2_poe_animal_3
+    name: Road End
