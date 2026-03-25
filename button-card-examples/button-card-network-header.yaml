@@ -1,0 +1,34 @@
+type: vertical-stack
+cards:
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: heading
+    icon: ""
+    heading: Network
+    heading_style: title
+    badges:
+      - type: entity
+        show_state: true
+        show_icon: true
+        entity: sensor.gt_ax11000_wan_download_speed
+        icon: mdi:arrow-down-bold
+        tap_action:
+          action: more-info
+      - type: entity
+        show_state: true
+        show_icon: true
+        entity: sensor.gt_ax11000_wan_upload_speed
+        icon: mdi:arrow-up-bold
+        tap_action:
+          action: more-info
+      - type: entity
+        show_state: false
+        show_icon: true
+        entity: binary_sensor.pi_hole_status_2
+        color: pink
+    tap_action:
+      action: perform-action
+      perform_action: input_boolean.toggle
+      target:
+        entity_id: input_boolean.toggle_minimal_network
