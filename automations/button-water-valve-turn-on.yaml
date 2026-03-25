@@ -1,3 +1,5 @@
+# Single push button next to the shower to turn back on the valve if shower runs too long and valve hits auto off
+
 alias: Buttons Water Valve Turn On
 description: ""
 triggers:
