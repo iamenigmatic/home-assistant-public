@@ -1,0 +1,16 @@
+# Daily start for house humidity level automation
+
+alias: Humidity 9am Trigger
+description: ""
+triggers:
+  - trigger: time
+    at: "10:01:00"
+conditions: []
+actions:
+  - action: automation.trigger
+    metadata: {}
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.humidity_level_house_automation
+mode: single
