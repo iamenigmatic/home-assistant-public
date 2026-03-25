@@ -1,0 +1,34 @@
+type: custom:firemote-card
+entity: media_player.living_room
+device_family: roku
+device_type: roku-ultra-2020
+compatibility_mode: default
+roku_remote_entity: remote.living_room
+defaultRemoteStyle_override: AL2
+app_launcher_relative_size: "1"
+app_launch_1: ""
+dpad_style: ""
+hide_button_group_frame: true
+scale: "46"
+app_launch_2: ""
+app_launch_3: ""
+button_overrides:
+  mute-button:
+    hidden: true
+  volume-down-button:
+    hidden: true
+  volume-up-button:
+    hidden: true
+  power-button:
+    hidden: true
+  reboot-button:
+    hidden: true
+  hamburger-button:
+    hidden: true
+  keyboard-button: null
+grid_options:
+  columns: full
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_remote
+    state: "on"
