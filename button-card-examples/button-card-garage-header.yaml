@@ -1,0 +1,55 @@
+type: vertical-stack
+cards:
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: heading
+    icon: ""
+    heading: Garage
+    heading_style: title
+    badges:
+      - type: entity
+        show_state: false
+        show_icon: true
+        entity: binary_sensor.aimesh_rp_ac1900
+        icon: mdi:ip-outline
+        color: green
+      - type: entity
+        show_state: true
+        show_icon: true
+        entity: sensor.water_detector_garage1_temperature
+        tap_action:
+          action: more-info
+      - type: entity
+        show_state: true
+        show_icon: true
+        entity: sensor.water_detector_garage1_humidity
+        tap_action:
+          action: more-info
+      - type: entity
+        show_state: false
+        show_icon: true
+        entity: sensor.water_detector_garage1_battery
+        tap_action:
+          action: more-info
+        visibility:
+          - condition: numeric_state
+            entity: sensor.water_detector_garage1_battery
+            below: 10
+        color: red
+      - type: entity
+        show_state: true
+        show_icon: true
+        entity: binary_sensor.water_detector_garage1_water_detected
+        color: red
+        visibility:
+          - condition: state
+            entity: binary_sensor.water_detector_garage1_water_detected
+            state_not: "off"
+        tap_action:
+          action: more-info
+    tap_action:
+      action: perform-action
+      perform_action: input_boolean.toggle
+      target:
+        entity_id: input_boolean.toggle_minimal_garage
