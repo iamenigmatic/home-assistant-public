@@ -1,0 +1,313 @@
+alias: Notifications Cameras Vehicle Person
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.rlc_823s2_vehicle_2
+      - binary_sensor.rlc_823s2_person_2
+      - binary_sensor.reolink_duo_2_poe_person_3
+      - binary_sensor.reolink_duo_2_poe_vehicle_3
+      - binary_sensor.camera1_person_3
+      - binary_sensor.rlc_823s2_vehicle
+    to:
+      - "on"
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.rlc_823s2_vehicle_2
+            state:
+              - "on"
+        sequence:
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: true
+              media_player_entity_id: media_player.home_assistant_voice_0a4a37_media_player
+              message: Vehicle detected on Road Drive.
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: false
+          - action: camera.snapshot
+            metadata: {}
+            target:
+              entity_id: camera.rlc_823s2_fluent_2
+            data:
+              filename: >-
+                /media/ReoDetection/RoadEntry_Vehicle_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            target:
+              entity_id: camera.rlc_823s2_fluent_2
+            data:
+              filename: /media/ReoDetection/current-road-entry-vehicle.jpg
+            enabled: true
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              message: Vehicle detected on Road Entry.
+              title: Road Entry Camera
+              data:
+                image: /media/local/ReoDetection/current-road-entry-vehicle.jpg
+          - action: notify.gotify
+            metadata: {}
+            data:
+              message: Vehicle detected on Road Entry.
+              title: Road Entry Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.rlc_823s2_vehicle
+            state:
+              - "on"
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Parking_Vehicle_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.rlc_823s2_fluent
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-parking-vehicle.jpg
+            enabled: true
+            target:
+              entity_id: camera.rlc_823s2_fluent
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              message: Vehicle detected on Parking.
+              title: Parking Camera
+              data:
+                image: /media/local/ReoDetection/current-parking-vehicle.jpg
+          - action: notify.gotify
+            metadata: {}
+            data:
+              message: Vehicle detected on Parking.
+              title: Parking Camera
+              data:
+                image: /media/local/ReoDetection/current-parking-vehicle.jpg
+            enabled: false
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+            enabled: true
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.reolink_duo_2_poe_vehicle_3
+            state:
+              - "on"
+        sequence:
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: true
+              media_player_entity_id: media_player.home_assistant_voice_0a4a37_media_player
+              message: Vehicle detected on Road End.
+            target:
+              entity_id: tts.home_assistant_cloud
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/RoadEnd_Vehicle_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_3
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 15
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-road-end-vehicle.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_3
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              message: Vehicle detected on Road End.
+              title: Road End Camera
+              data:
+                image: /media/local/ReoDetection/current-road-end-vehicle.jpg
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.rlc_823s2_person_2
+            state:
+              - "on"
+        sequence:
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: true
+              media_player_entity_id: media_player.home_assistant_voice_0a4a37_media_player
+              message: Person detected on Road Drive.
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: false
+          - action: camera.snapshot
+            metadata: {}
+            target:
+              entity_id: camera.rlc_823s2_fluent_2
+            data:
+              filename: /media/ReoDetection/current-road-entry-person.jpg
+            enabled: true
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            target:
+              entity_id: camera.rlc_823s2_fluent_2
+            data:
+              filename: >-
+                /media/ReoDetection/RoadEntry_Person_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              message: Person detected on Road Entry.
+              title: Road Entry Camera
+              data:
+                image: /media/local/ReoDetection/current-road-entry-person.jpg
+          - action: notify.gotify
+            metadata: {}
+            data:
+              message: Person detected on Road Entry.
+              title: Road Entry Camera
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.reolink_duo_2_poe_person_3
+            state:
+              - "on"
+        sequence:
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: true
+              media_player_entity_id: media_player.home_assistant_voice_0a4a37_media_player
+              message: Person detected on Road End.
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: false
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/RoadEnd_Person_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_3
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 15
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-road-end-person.jpg
+            enabled: true
+            target:
+              entity_id: camera.reolink_duo_2_poe_fluent_3
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              message: Person detected on Road End.
+              title: Road End Camera
+              data:
+                image: /media/local/ReoDetection/current-road-end-person.jpg
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.camera1_person_3
+            state:
+              - "on"
+        sequence:
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: >-
+                /media/ReoDetection/Porch_Person_{{
+                now().strftime("%Y%m%d-%H%M%S") }}.jpg
+            enabled: true
+            target:
+              entity_id: camera.camera1_fluent_3
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 10
+              milliseconds: 0
+          - action: camera.snapshot
+            metadata: {}
+            data:
+              filename: /media/ReoDetection/current-porch-person.jpg
+            enabled: true
+            target:
+              entity_id: camera.camera1_fluent_3
+          - action: notify.mobile_app_person1phone
+            metadata: {}
+            data:
+              message: Person detected on Porch.
+              title: Porch Camera
+              data:
+                image: /media/local/ReoDetection/current-porch-person.jpg
+          - action: notify.gotify
+            metadata: {}
+            data:
+              message: Person detected on Porch.
+              title: Porch Camera
+              data:
+                priority: 10
+                extras:
+                  client::display:
+                    contentType: text/markdown
+                  client::notification:
+                    bigImageUrl: /media/local/ReoDetection/current-porch-person.jpg
+            enabled: false
+          - delay:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+mode: single
