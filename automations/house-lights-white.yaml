@@ -1,0 +1,35 @@
+# Change all outdoor lights to the same color
+
+alias: House Lights White Button
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - input_button.house_lights_white
+conditions: []
+actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      kelvin: 2283
+      xy_color: 0.57, 0.389
+      color_temp: 438
+      brightness: 255
+      brightness_pct: 100
+    target:
+      entity_id:
+        - light.back_porch
+        - light.front_stairs
+        - light.garage
+        - light.lower_parking
+        - light.porch_1
+        - light.porch_2
+        - light.porch_3
+        - light.string_back_left
+        - light.string_back_right
+        - light.string_front_left
+        - light.string_front_right
+        - light.string_front_stairs
+        - light.string_laundry
+        - light.string_lights
+mode: single
