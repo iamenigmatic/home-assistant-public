@@ -1,0 +1,19 @@
+alias: Notification Dryer Finished
+description: ""
+triggers:
+  - trigger: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.dryer
+    id: Dryer Finished
+conditions: []
+actions:
+  - action: tts.speak
+    metadata: {}
+    target:
+      entity_id: tts.home_assistant_cloud
+    data:
+      cache: true
+      media_player_entity_id: media_player.home_assistant_voice_0a4a37_media_player
+      message: The dryer is finished!!  Go get your clothes before they wrinkle!!!!!!
+mode: single
