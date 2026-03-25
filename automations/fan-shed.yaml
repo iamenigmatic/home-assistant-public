@@ -1,0 +1,13 @@
+alias: Fan Shed
+description: ""
+triggers:
+  - trigger: time_pattern
+    hours: /1
+conditions: []
+actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.shed_fan
+mode: single
