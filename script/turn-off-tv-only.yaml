@@ -1,0 +1,16 @@
+# Harmony Hub script to turn on and off only television
+
+alias: Turn Off Tv ONLY
+sequence:
+  - action: remote.send_command
+    data:
+      num_repeats: 1
+      delay_secs: 0.4
+      hold_secs: 0
+      command:
+        - PowerToggle
+      device: Sharp TV
+    target:
+      entity_id: remote.harmony_hub
+description: ""
+icon: mdi:television
