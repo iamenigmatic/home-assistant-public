@@ -1,0 +1,10 @@
+# Add your own switch and put this conditional window at the bottom of your layout.  It will stay hidden.
+
+type: conditional
+conditions:
+  - condition: state
+    entity: switch.breathesmart_45i_power
+    state: unavailable
+card:
+  type: markdown
+  content: THIS EXISTS TO MAKE SURE HOME FEED CARD LINE ITEMS SHOW PROPERLY.
