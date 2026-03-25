@@ -1,0 +1,125 @@
+# Turbo charged air purifier for when you "smoke"
+
+alias: Purifier PM2 Fan Control
+sequence:
+  - parallel:
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.breathesmart_45i_pm2_5
+            above: -1
+            below: 5
+        then:
+          - action: fan.set_percentage
+            metadata: {}
+            data:
+              percentage: 1
+            target:
+              entity_id: fan.breathesmart_45i
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 30
+              milliseconds: 0
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.breathesmart_45i_pm2_5
+            above: 5
+            below: 25
+        then:
+          - action: fan.set_percentage
+            metadata: {}
+            data:
+              percentage: 32
+            target:
+              entity_id: fan.breathesmart_45i
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 30
+              milliseconds: 0
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.breathesmart_45i_pm2_5
+            above: 25
+            below: 100
+        then:
+          - action: fan.set_percentage
+            metadata: {}
+            data:
+              percentage: 45
+            target:
+              entity_id: fan.breathesmart_45i
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 30
+              milliseconds: 0
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.breathesmart_45i_pm2_5
+            above: 100
+            below: 200
+        then:
+          - action: fan.set_percentage
+            metadata: {}
+            data:
+              percentage: 65
+            target:
+              entity_id: fan.breathesmart_45i
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 30
+              milliseconds: 0
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.breathesmart_45i_pm2_5
+            above: 200
+            below: 300
+        then:
+          - action: fan.set_percentage
+            metadata: {}
+            data:
+              percentage: 80
+            target:
+              entity_id: fan.breathesmart_45i
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 30
+              milliseconds: 0
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.breathesmart_45i_pm2_5
+            above: 300
+            below: 400
+        then:
+          - action: fan.set_percentage
+            metadata: {}
+            data:
+              percentage: 90
+            target:
+              entity_id: fan.breathesmart_45i
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 30
+              milliseconds: 0
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.breathesmart_45i_pm2_5
+            above: 400
+            below: 1600
+        then:
+          - action: fan.set_percentage
+            metadata: {}
+            data:
+              percentage: 100
+            target:
+              entity_id: fan.breathesmart_45i
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 30
+              milliseconds: 0
+description: ""
