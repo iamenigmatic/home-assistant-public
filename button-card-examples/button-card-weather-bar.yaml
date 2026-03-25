@@ -1,0 +1,128 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: weather.forecast_home_2
+        name: Weather
+        show_name: false
+        tap_action:
+          action: more-info
+          target:
+            entity_id: weather.forecast_home_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                    if (entity.state == 'partlycloudy') return 'skyblue';
+                    if (entity.state == 'cloudy') return 'powderblue';
+                    if (entity.state == 'fog') return 'grey';
+                    if (entity.state == 'clear-night') return 'midnightblue';
+                    if (entity.state == 'rainy') return 'orange';
+                    if (entity.state == 'sunny') return 'goldenrod';
+                    
+                    else return 'red';
+                  ]]]
+            - padding: 0%
+            - color: black
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+            - border-radius: 50%
+            - height: 35px
+            - width: 35px
+          icon:
+            - color: black
+            - width: 35px
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: weather.forecast_home_2
+        show_entity_picture: false
+        icon: null
+        show_icon: false
+        name: Temp
+        show_name: false
+        label: |
+          [[[
+              if (states['weather.forecast_home_2'].attributes.temperature <= 99) return '&nbsp' + states['weather.forecast_home_2'].attributes.temperature +
+          '°';
+
+              else return '' + states['weather.forecast_home_2'].attributes.temperature +
+          '°';
+          ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: weather.forecast_home_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                    if (states['weather.forecast_home_2'].attributes.temperature >= 36.0 && states['weather.forecast_home_2'].attributes.temperature < 42.0) return 'orange';
+                    if (states['weather.forecast_home_2'].attributes.temperature >= 42.0 && states['weather.forecast_home_2'].attributes.temperature < 54.0) return 'yellow';
+                    if (states['weather.forecast_home_2'].attributes.temperature >= 54.0 && states['weather.forecast_home_2'].attributes.temperature < 80.0) return 'mediumseagreen';
+                    if (states['weather.forecast_home_2'].attributes.temperature >= 80.0 && states['weather.forecast_home_2'].attributes.temperature < 90.0) return 'yellow';
+                    if (states['weather.forecast_home_2'].attributes.temperature >= 90.0 && states['weather.forecast_home_2'].attributes.temperature < 100.0) return 'orange';
+                    else return 'red';
+                ]]]
+            - padding: 0%
+            - color: black
+            - font-size: 15px
+            - font-weight: bold
+            - text-transform: capitalize
+            - border-radius: 50%
+            - height: 35px
+            - width: 35px
+          icon:
+            - color: black
+            - width: 35px
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: weather.forecast_home_2
+        show_entity_picture: false
+        icon: mdi:weather-windy
+        show_icon: true
+        name: Wind
+        show_name: false
+        label: |
+          [[[
+              return '' + states['weather.forecast_home_2'].attributes.wind_speed +
+          'mph';
+          ]]]
+        show_label: false
+        tap_action:
+          action: more-info
+          target:
+            entity_id: weather.forecast_home_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                    if (states['weather.forecast_home_2'].attributes.wind_speed >= 0.0 && states['weather.forecast_home_2'].attributes.wind_speed < 8.0) return 'mediumseagreen';
+                    if (states['weather.forecast_home_2'].attributes.wind_speed >= 8.0 && states['weather.forecast_home_2'].attributes.wind_speed < 12.0) return 'yellow';
+                    if (states['weather.forecast_home_2'].attributes.wind_speed >= 12.0 && states['weather.forecast_home_2'].attributes.wind_speed < 16.0) return 'orange';
+                    else return 'red';
+                ]]]
+            - padding: 0%
+            - color: black
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+            - border-radius: 50%
+            - height: 35px
+            - width: 35px
+          icon:
+            - color: black
+            - width: 35px
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
