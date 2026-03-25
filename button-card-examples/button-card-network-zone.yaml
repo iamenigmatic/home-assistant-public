@@ -1,0 +1,371 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: sensor.synology_cpu_utilization_total
+        icon: mdi:cpu-64-bit
+        name: CPU
+        show_name: false
+        label: >
+          [[[ return '' + states['sensor.synology_cpu_utilization_total'].state +
+          '%'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.synology_cpu_utilization_total
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0.0 && entity.state < 15.0) return 'mediumseagreen';
+                    if (entity.state >= 15.0 && entity.state < 25.0) return 'yellow';
+                    if (entity.state >= 25.0 && entity.state < 35.0) return 'orange';
+                    else return 'red';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: label-card
+        color: black
+        label: NAS
+        show_label: true
+      - type: custom:button-card
+        entity: sensor.synology_memory_usage_real
+        icon: mdi:memory
+        name: RAM
+        show_name: false
+        label: >
+          [[[ return '' + states['sensor.synology_memory_usage_real'].state + '%';
+          ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.synology_memory_usage_real
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0.0 && entity.state < 45.0) return 'mediumseagreen';
+                    if (entity.state >= 45.0 && entity.state < 50.0) return 'yellow';
+                    if (entity.state >= 50.0 && entity.state < 65.0) return 'orange';
+                    else return 'red';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: sensor.ha_cpu
+        icon: mdi:cpu-64-bit
+        name: CPU
+        show_name: false
+        label: |
+          [[[ return '' + states['sensor.ha_cpu'].state + '%'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.ha_cpu
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0.0 && entity.state < 10.0) return 'mediumseagreen';
+                    if (entity.state >= 10.0 && entity.state < 20.0) return 'yellow';
+                    if (entity.state >= 20.0 && entity.state < 30.0) return 'orange';
+                    else return 'red';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: label-card
+        color: black
+        label: HA+
+        show_label: true
+      - type: custom:button-card
+        entity: sensor.ha_ram
+        icon: mdi:memory
+        name: RAM
+        show_name: false
+        label: |
+          [[[ return '' + states['sensor.ha_ram'].state + '%'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.ha_ram
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0.0 && entity.state < 15.0) return 'mediumseagreen';
+                    if (entity.state >= 15.0 && entity.state < 25.0) return 'yellow';
+                    if (entity.state >= 25.0 && entity.state < 40.0) return 'orange';
+                    else return 'red';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.gt_ax11000_connected_devices
+        icon: mdi:router-network
+        name: Connected
+        show_name: false
+        label: >
+          [[[ return '' + states['sensor.gt_ax11000_connected_devices'].state +
+          ' Local'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.gt_ax11000_connected_devices
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state >= 25.0) return 'mediumseagreen';
+                    
+                    else return 'red';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.gt_ax11000_connected_guestnetwork_devices
+        icon: mdi:router-network
+        name: Connected
+        show_name: false
+        label: >
+          [[[ return '' +
+          states['sensor.gt_ax11000_connected_guestnetwork_devices'].state + '
+          Guest'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.gt_ax11000_connected_guestnetwork_devices
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state == 0.0) return 'white';
+                    if (entity.state >= 1.0 && entity.state < 10.0) return 'mediumseagreen';
+                    
+                    else return 'red';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: switch.pi_hole_2
+        icon: mdi:pi-hole
+        name: Pi-Hole
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: switch.toggle
+          target:
+            entity_id: switch.pi_hole_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'deeppink';
+
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.pi_hole_ads_percentage_blocked_today_2
+        icon: mdi:close-octagon
+        numeric_precision: 2
+        show_state: true
+        name: Ad %
+        show_name: false
+        label: >
+          [[[ return '' +
+          states['sensor.pi_hole_ads_percentage_blocked_today_2'].state + '%'; ]]]
+        show_label: false
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.pi_hole_ads_percentage_blocked_today_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0.0 && entity.state < 15.0) return 'mediumseagreen';
+                    if (entity.state >= 15.0 && entity.state < 30.0) return 'yellow';
+                    if (entity.state >= 30.0 && entity.state < 40.0) return 'orange';
+                    else return 'red';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.pi_hole_ads_blocked_today_2
+        icon: mdi:advertisements
+        name: Ad %
+        show_name: false
+        label: >
+          [[[ return '' + states['sensor.pi_hole_ads_blocked_today_2'].state +
+          ''; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.pi_hole_ads_blocked_today_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0.0 && entity.state < 10000.0) return 'mediumseagreen';
+                    if (entity.state >= 10000.0 && entity.state < 20000.0) return 'yellow';
+                    if (entity.state >= 20000.0 && entity.state < 30000.0) return 'orange';
+                    else return 'red';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_network
+    state: "on"
