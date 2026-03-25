@@ -1,0 +1,43 @@
+# Auto dining light during set hours
+
+alias: Motion Dining Light
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.motion_sunroom_occupancy
+    from: "off"
+    to: "on"
+conditions:
+  - condition: time
+    after: "09:00:00"
+    before: "02:00:00"
+    weekday:
+      - fri
+      - thu
+      - wed
+      - tue
+      - mon
+      - sat
+      - sun
+actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.dining_light
+  - wait_for_trigger:
+      - trigger: state
+        entity_id:
+          - binary_sensor.motion_sunroom_occupancy
+        to: "off"
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 0
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.dining_light
+mode: single
