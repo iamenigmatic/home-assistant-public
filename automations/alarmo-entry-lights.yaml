@@ -1,3 +1,5 @@
+# Turn on kitchen and dining lights when alarm entry delay triggers between 5pm and 3am
+
 alias: Alarmo Entry Lights
 description: ""
 triggers:
