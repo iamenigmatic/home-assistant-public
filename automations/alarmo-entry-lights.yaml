@@ -1,0 +1,33 @@
+alias: Alarmo Entry Lights
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - alarm_control_panel.alarmo
+    to:
+      - pending
+conditions:
+  - condition: time
+    after: "17:00:00"
+    before: "03:00:00"
+    weekday:
+      - sun
+      - sat
+      - fri
+      - thu
+      - wed
+      - tue
+      - mon
+actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_lights
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.dining_light
+mode: single
