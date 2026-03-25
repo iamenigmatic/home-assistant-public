@@ -1,0 +1,22 @@
+# Reload Switchbot integration after 10 minutes being disconnected
+
+alias: PC Switchbot Reload
+description: ""
+triggers:
+  - entity_id:
+      - binary_sensor.connected_pc
+    to:
+      - "on"
+    trigger: state
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+conditions: []
+actions:
+  - target:
+      entity_id:
+        - input_button.switchbot_button_pc
+    action: homeassistant.reload_config_entry
+    data: {}
+mode: single
