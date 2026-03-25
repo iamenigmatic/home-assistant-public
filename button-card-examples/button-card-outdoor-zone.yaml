@@ -1,0 +1,1306 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: switch.home_water_valve_shutoff_valve
+        icon: |
+          [[[
+            if (entity.state == 'on') return 'mdi:valve-open';
+                  
+            else return 'mdi:valve-closed';
+          ]]]
+        name: Home Water
+        show_name: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: switch.home_water_valve_shutoff_valve
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'lightblue';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'lightblue';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: binary_sensor.home_water_valve_pending_system_alerts
+        icon: |
+          [[[
+            if (entity.state == 'off') return 'mdi:check-circle';
+                  
+            else return 'mdi:alert-circle';
+          ]]]
+        name: Status
+        show_name: false
+        label: >
+          [[[ return 'Alerts: ' +
+          states['binary_sensor.home_water_valve_pending_system_alerts'].state;
+          ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: binary_sensor.home_water_valve_pending_system_alerts
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'off') return 'mediumseagreen';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'off') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'off') return 'black';
+
+                  else return 'yellow';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.home_water_valve_current_system_mode
+        icon: |
+          [[[
+            if (entity.state == 'home') return 'mdi:eye';
+            if (entity.state == 'sleep') return 'mdi:sleep';
+                  
+            else return 'mdi:eye-closed';
+          ]]]
+        name: Status
+        show_name: false
+        label: >
+          [[[ return '' +
+          states['sensor.home_water_valve_current_system_mode'].state; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.home_water_valve_current_system_mode
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'home') return 'mediumseagreen';
+                  if (entity.state == 'sleep') return 'dimgrey';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'home') return 'black';
+                  if (entity.state == 'sleep') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'home') return 'black';
+                  if (entity.state == 'sleep') return 'black';
+
+                  else return 'yellow';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: switch.water_valve_switch
+        icon: mdi:power-plug
+        name: Water
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: switch.toggle
+          target:
+            entity_id: switch.water_valve_switch
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+                  if (entity.state == 'off') return 'black';
+
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: sensor.home_water_valve_water_temperature
+        icon: mdi:water-thermometer-outline
+        name: Status
+        show_name: false
+        label: >
+          [[[ return '' +
+          states['sensor.home_water_valve_water_temperature'].state + '° F'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.home_water_valve_water_temperature
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 20.0 && entity.state < 38.0) return 'red';
+                    if (entity.state >= 38.0 && entity.state < 45.0) return 'orange';
+                    if (entity.state >= 45.0 && entity.state < 55.0) return 'yellow';
+                    else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.home_water_valve_water_flow_rate
+        icon: mdi:water-pump
+        name: Status
+        show_name: false
+        label: >
+          [[[ return '' + states['sensor.home_water_valve_water_flow_rate'].state
+          + ' g/m'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.home_water_valve_water_flow_rate
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: null
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state > 0.1 && entity.state < 1.5) return 'yellow';
+                    if (entity.state >= 1.5 && entity.state < 2.0) return 'orange';
+                    if (entity.state >= 2.0 && entity.state < 20.0) return 'red';
+                    else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.home_water_valve_water_pressure
+        icon: |
+          [[[
+              if (entity.state > 0.0 && entity.state < 40) return 'mdi:gauge-empty';
+              if (entity.state >= 40.0 && entity.state < 50.0) return 'mdi:gauge-low';
+              if (entity.state >= 50.0 && entity.state < 60.0) return 'mdi:gauge';
+              else return 'mdi:gauge-full';
+          ]]]
+        name: Status
+        show_name: false
+        label: >
+          [[[ return '' + states['sensor.home_water_valve_water_pressure'].state
+          + ' psi'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.home_water_valve_water_pressure
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: black
+            - padding: 0%
+            - color: white
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: null
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                    if (entity.state >= 0.0 && entity.state < 40.0) return 'red';
+                    if (entity.state >= 40.0 && entity.state < 50.0) return 'orange';
+                    if (entity.state >= 50.0 && entity.state < 60.0) return 'yellow';
+                    if (entity.state >75.0) return 'red';
+                    else return 'mediumseagreen';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: sensor.home_water_valve_today_s_water_usage
+        icon: mdi:water
+        name: Status
+        show_name: false
+        label: >
+          [[[ return '' +
+          states['sensor.home_water_valve_today_s_water_usage'].state + 'g'; ]]]
+        show_label: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: sensor.home_water_valve_today_s_water_usage
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                    if (entity.state >= 0.0 && entity.state <= 100.0) return 'mediumseagreen';
+                    if (entity.state >= 100.0 && entity.state < 150.0) return 'orange';
+                    else return 'red';
+                  ]]]
+            - padding: 0%
+            - color: black
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: aqua
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: light.porch_lights
+        icon: mdi:lightbulb-group
+        name: Porch
+        show_name: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: light.porch_lights
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'var(--button-card-light-color)';
+                  
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'darkgoldenrod';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: light.porch_1
+        icon: mdi:lightbulb
+        name: Door
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.porch_1
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.porch_2
+        icon: mdi:lightbulb
+        name: Center
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.porch_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.porch_3
+        icon: mdi:lightbulb
+        name: Garage
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.porch_3
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.back_porch
+        icon: mdi:light-flood-down
+        name: Back
+        show_name: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: light.back_porch
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: light.front_flood_lights
+        icon: mdi:light-flood-down
+        name: Floods
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.front_flood_lights
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'var(--button-card-light-color)';
+                  
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'darkgoldenrod';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: light.garage
+        icon: mdi:light-flood-down
+        name: Garage
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.garage
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.front_stairs
+        icon: mdi:light-flood-down
+        name: Stairs
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.front_stairs
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.lower_parking
+        icon: mdi:light-flood-down
+        name: Parking
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.lower_parking
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: light.string_house_lights
+        icon: mdi:string-lights
+        name: strings
+        show_name: true
+        tap_action:
+          action: more-info
+          target:
+            entity_id: light.string_house_lights
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'var(--button-card-light-color)';
+                  
+                  else return 'black';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'darkgoldenrod';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: light.string_lights
+        icon: mdi:string-lights
+        name: Parking
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.string_lights
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.string_front_stairs
+        icon: mdi:string-lights
+        name: Stairs
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.string_front_stairs
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.string_laundry
+        icon: mdi:string-lights
+        name: Laundry
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.string_laundry
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: light.string_front_left
+        icon: mdi:string-lights
+        name: Front L
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.string_front_left
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.string_front_right
+        icon: mdi:string-lights
+        name: Front R
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.string_front_right
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.string_back_left
+        icon: mdi:string-lights
+        name: Back L
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.string_back_left
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: custom:button-card
+        entity: light.string_back_right
+        icon: mdi:string-lights
+        name: Back R
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: light.toggle
+          target:
+            entity_id: light.string_back_right
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'darkgoldenrod';
+                  if (entity.state == 'off') return 'black';
+                  
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'darkgoldenrod';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+  - type: heading
+    icon: ""
+    heading_style: title
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: switch.parking_double_plug_2
+        icon: mdi:skull
+        name: Left
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: switch.toggle
+          target:
+            entity_id: switch.parking_double_plug_2
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+                  if (entity.state == 'off') return 'black';
+
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: switch.parking_double_plug_1_2
+            icon: mdi:power-plug
+            name: Strings
+            show_name: true
+            tap_action:
+              action: perform-action
+              perform_action: switch.toggle
+              target:
+                entity_id: switch.parking_double_plug_1_2
+            styles:
+              card:
+                - "--mdc-ripple-color": lime
+                - "--mdc-ripple-press-opacity": 0.5
+                - background-color: |
+                    [[[
+                      if (entity.state == 'on') return 'mediumseagreen';
+                      if (entity.state == 'off') return 'black';
+
+                      else return 'red';
+                    ]]]
+                - padding: 0%
+                - color: |
+                    [[[
+                      if (entity.state == 'on') return 'black';
+
+                      else return 'white';
+                    ]]]
+                - font-size: 11px
+                - font-weight: bold
+                - text-transform: capitalize
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - color: |
+                    [[[
+                      if (entity.state == 'on') return 'black';
+                      if (entity.state == 'off') return 'mediumseagreen';
+
+                      else return 'white';
+                    ]]]
+                - width: 30%
+                - margin-top: 0%
+      - type: custom:button-card
+        entity: switch.parking_double_plug_1_1
+        icon: mdi:skull
+        name: Right
+        show_name: true
+        tap_action:
+          action: perform-action
+          perform_action: switch.toggle
+          target:
+            entity_id: switch.parking_double_plug_1_1
+        styles:
+          card:
+            - "--mdc-ripple-color": lime
+            - "--mdc-ripple-press-opacity": 0.5
+            - background-color: |
+                [[[
+                  if (entity.state == 'on') return 'mediumseagreen';
+                  if (entity.state == 'off') return 'black';
+
+                  else return 'red';
+                ]]]
+            - padding: 0%
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+
+                  else return 'white';
+                ]]]
+            - font-size: 11px
+            - font-weight: bold
+            - text-transform: capitalize
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - color: |
+                [[[
+                  if (entity.state == 'on') return 'black';
+                  if (entity.state == 'off') return 'mediumseagreen';
+
+                  else return 'white';
+                ]]]
+            - width: 30%
+            - margin-top: 0%
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_outdoor
+    state: "on"
