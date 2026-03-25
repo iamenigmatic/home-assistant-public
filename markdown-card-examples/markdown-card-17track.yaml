@@ -1,0 +1,41 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: markdown
+            content: >
+              {% for package in
+              states.sensor['17track_in_transit'].attributes.packages %}
+
+              >- **{{ package.friendly_name }} ({{ package.tracking_number
+              }}):** {{ package.location }}
+
+              {% endfor %}
+  - type: horizontal-stack
+    cards:
+      - type: markdown
+        content: >-
+          {% for package in
+          states.sensor['17track_ready_to_be_picked_up'].attributes.packages %}
+
+          >- **{{ package.friendly_name }} ({{ package.tracking_number }}):** {{
+          package.info_text }}
+
+          {% endfor %}
+  - type: horizontal-stack
+    cards:
+      - type: markdown
+        content: >-
+          {% for package in
+          states.sensor['17track_delivered'].attributes.packages %}
+
+          >- **{{ package.friendly_name }} ({{ package.tracking_number }}):** {{
+          package.info_text }}
+
+          {% endfor %}
+visibility:
+  - condition: state
+    entity: input_boolean.toggle_minimal_delivery
+    state: "on"
