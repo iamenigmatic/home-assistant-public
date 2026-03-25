@@ -1,0 +1,30 @@
+alias: Buttons Water Valve Turn On
+description: ""
+triggers:
+  - domain: mqtt
+    device_id: id
+    type: action
+    subtype: single
+    trigger: device
+  - device_id: id
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: "002"
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 002
+    trigger: device
+    value: 2
+conditions:
+  - condition: device
+    type: is_off
+    device_id: 098db988cc
+    entity_id: b348938
+    domain: switch
+actions:
+  - type: turn_on
+    device_id: 098db988
+    entity_id: b34893
+    domain: switch
+mode: single
