@@ -1,0 +1,16 @@
+# Uses a script to turn off TV when Receiver source switches to Server
+
+alias: Music Assistant TV OFF
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - media_player.rx_v479
+    attribute: source
+    from: HDMI6
+    to: Server
+conditions: []
+actions:
+  - action: script.turn_off_tv_only
+    data: {}
+mode: single
