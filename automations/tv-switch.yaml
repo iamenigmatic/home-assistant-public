@@ -1,0 +1,20 @@
+# Helper switch to run a script
+
+alias: TV Switch Automation
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - input_boolean.tv_switch
+    from: "off"
+    to: "on"
+  - trigger: state
+    entity_id:
+      - input_boolean.tv_switch
+    from: "on"
+    to: "off"
+conditions: []
+actions:
+  - action: script.turn_off_tv
+    data: {}
+mode: single
