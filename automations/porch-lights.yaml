@@ -1,0 +1,46 @@
+alias: Porch Lights
+description: ""
+triggers:
+  - trigger: sun
+    event: sunrise
+    offset: 0
+  - trigger: sun
+    event: sunset
+    offset: 0
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: sun
+            before: sunrise
+            after: sunset
+        sequence:
+          - action: light.turn_on
+            metadata: {}
+            data:
+              brightness_pct: 100
+            target:
+              entity_id:
+                - light.porch_lights
+          - action: switch.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.indoor_lights
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.string_house_lights
+      - conditions:
+          - condition: sun
+            before: sunset
+            after: sunrise
+        sequence:
+          - action: light.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id:
+                - light.porch_lights
+mode: single
