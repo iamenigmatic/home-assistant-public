@@ -1,0 +1,24 @@
+# zwave button for alarm use
+
+alias: Wall Remote Living Alarmo
+description: ""
+triggers:
+  - device_id: 357d4
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: "004"
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 004
+    trigger: device
+    value: 4
+conditions: []
+actions:
+  - action: alarm_control_panel.alarm_disarm
+    metadata: {}
+    data:
+      code: "0810"
+    target:
+      entity_id: alarm_control_panel.alarmo
+mode: single
