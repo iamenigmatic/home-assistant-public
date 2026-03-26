@@ -1,0 +1,25 @@
+# Turn back on tv when done listening to music
+
+alias: Stereo Source Turn On TV
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - media_player.rx_v479
+    attribute: source
+    from: Server
+    to: HDMI6
+conditions: []
+actions:
+  - action: media_player.clear_playlist
+    metadata: {}
+    data: {}
+    enabled: true
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.toggle_minimal_music
+  - action: script.turn_off_tv_only
+    data: {}
+mode: single
