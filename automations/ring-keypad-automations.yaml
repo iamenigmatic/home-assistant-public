@@ -1,0 +1,7 @@
+alias: Ring Keypad Automations
+description: ""
+use_blueprint:
+  path: ImSorryButWho/synchronize-ring-alarm-keypad-v2-with-alarmo.yaml
+  input:
+    keypad: c8e2
+    alarm: alarm_control_panel.alarmo
