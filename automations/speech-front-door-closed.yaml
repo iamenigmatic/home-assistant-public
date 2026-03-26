@@ -1,0 +1,26 @@
+# Door to speech
+
+alias: Speech Front Door Closed
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.door_back_intrusion
+    to:
+      - "off"
+conditions: []
+actions:
+  - action: tts.speak
+    metadata: {}
+    data:
+      cache: true
+      media_player_entity_id: media_player.home_assistant_voice_0a4a37_media_player
+      message: >-
+        Wait!  Does anybody know the alarm code?  Does anybody have it written
+        down or something?  Seriously, we need to turn this thing off.  Is it
+        getting louder?  It is for sure getting louder.  Jesus!  Somebody put in
+        the code!  What.  The.  Actual.  Fuck.  This thing is so loud!  Are your
+        ears bleeding too?
+    target:
+      entity_id: tts.home_assistant_cloud
+mode: single
