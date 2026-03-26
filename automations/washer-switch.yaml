@@ -1,0 +1,28 @@
+alias: Washer Switch
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - input_boolean.washer_switch
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.washer_switch
+            state: "on"
+        sequence:
+          - action: timer.start
+            target:
+              entity_id: timer.washer
+            data: {}
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.washer_switch
+            state: "off"
+        sequence:
+          - action: timer.finish
+            target:
+              entity_id: timer.washer
+            data: {}
+mode: single
