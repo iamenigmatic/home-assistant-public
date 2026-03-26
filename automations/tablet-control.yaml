@@ -1,0 +1,39 @@
+# Control living room HA display charging levels
+
+alias: Tablet Charging Automation
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.tab_power_threshold
+    to: "off"
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - type: is_battery_level
+            condition: device
+            device_id: efc79
+            entity_id: 506f
+            domain: sensor
+            below: 20
+        sequence:
+          - action: switch.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.tabpower
+      - conditions:
+          - type: is_battery_level
+            condition: device
+            device_id: efc79
+            entity_id: 506f9
+            domain: sensor
+            above: 80
+        sequence:
+          - action: switch.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.tabpower
+mode: single
