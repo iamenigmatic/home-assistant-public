@@ -1,0 +1,21 @@
+alias: Wall Remote Living TV Off
+description: ""
+triggers:
+  - device_id: 357d414d4d
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: "001"
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 001
+    trigger: device
+    value: 0
+conditions: []
+actions:
+  - action: input_boolean.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.tv_switch
+mode: single
