@@ -1,0 +1,24 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+homeassistant:
+    allowlist_external_dirs:
+    - '/media/ReoDetection'
+    media_dirs:
+      local: /media
+notify:
+  - name: "gotify"
+    platform: gotify
+    url: http://192.168.0.4:6742
+    token: !secret gotpass  # set in secrets
+    verify_ssl: false # optional, default true
+    msg_blacklist:   # optional, discard message if the text equals one of this strings
+      - TTS
