@@ -1,0 +1,19 @@
+alias: Wall Remote Living Dining Light
+description: ""
+triggers:
+  - device_id: 357d414d
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: "004"
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 004
+    trigger: device
+    value: 0
+conditions: []
+actions:
+  - action: script.dining_light_motion_switch_toggle
+    metadata: {}
+    data: {}
+mode: single
