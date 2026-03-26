@@ -1,0 +1,23 @@
+alias: Wall Remote Living LR Lights
+description: ""
+triggers:
+  - device_id: 357d4
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: "003"
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 003
+    trigger: device
+    value: 0
+conditions: []
+actions:
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 80
+      transition: 2
+    target:
+      entity_id: light.living_room_lights
+mode: single
