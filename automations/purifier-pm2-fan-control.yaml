@@ -1,0 +1,46 @@
+# Turbo charged air purifier for when you "smoke"
+
+alias: Purifier PM2 Fan Control Automation
+description: ""
+triggers:
+  - trigger: numeric_state
+    entity_id:
+      - sensor.breathesmart_45i_pm2_5
+    above: -1
+    below: 5
+  - trigger: numeric_state
+    entity_id:
+      - sensor.breathesmart_45i_pm2_5
+    above: 5
+    below: 50
+  - trigger: numeric_state
+    entity_id:
+      - sensor.breathesmart_45i_pm2_5
+    above: 50
+    below: 100
+  - trigger: numeric_state
+    entity_id:
+      - sensor.breathesmart_45i_pm2_5
+    above: 100
+    below: 200
+  - trigger: numeric_state
+    entity_id:
+      - sensor.breathesmart_45i_pm2_5
+    above: 200
+    below: 300
+  - trigger: numeric_state
+    entity_id:
+      - sensor.breathesmart_45i_pm2_5
+    above: 300
+    below: 400
+  - trigger: numeric_state
+    entity_id:
+      - sensor.breathesmart_45i_pm2_5
+    above: 400
+    below: 1600
+conditions: []
+actions:
+  - action: script.purifier_pm2_fan_control
+    metadata: {}
+    data: {}
+mode: single
